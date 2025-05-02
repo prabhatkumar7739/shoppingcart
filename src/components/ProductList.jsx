@@ -26,7 +26,7 @@ const ProductList = ({ addToCart }) => {
   }, []);
 
   if (loading) {
-    return <div className="loading">Loading products...</div>;
+    return <div className="loading">Loading products</div>;
   }
 
   if (error) {

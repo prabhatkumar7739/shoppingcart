@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FaShoppingCart, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import Header from './components/Header';
 import Login from './components/Login';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
@@ -48,18 +50,16 @@ function App() {
         <Login onLogin={handleLogin} />
       ) : (
         <>
-          <header className="header">
-            <h1>E-Commerce Store</h1>
-            <div className="header-actions">
-              <button className="cart-button" onClick={() => setIsCartOpen(true)}>
-                Cart ({totalItems})
-              </button>
-              <button className="logout-button" onClick={handleLogout}>
-                Logout
-              </button>
-            </div>
-          </header>
-          <ProductList addToCart={addToCart} />
+          <Header 
+            cartItemCount={totalItems}
+            onCartClick={() => setIsCartOpen(true)}
+            onLogout={handleLogout}
+          />
+          
+          <main className="main-content">
+            <ProductList addToCart={addToCart} />
+          </main>
+
           <Cart
             isOpen={isCartOpen}
             onClose={() => setIsCartOpen(false)}
